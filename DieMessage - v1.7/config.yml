@@ -1,0 +1,19 @@
+intercept: true
+message:
+  - "%player% fell out of the world"
+  - "§l%player% 不知怎么就一命呜呼了"
+  - "or:§l%player% 猝死了"
+  - "%player% tried to swim in lava"
+  - "§l%player% 试图在岩浆里游泳，但他失败了"
+  - "or:§l%player% 把岩浆看成了水"
+  - "%player% was slain by Zombie"
+  - "§l%player% 太菜了,居然被小僵尸杀死了"
+  - "%player% drowned"
+  - "§l%player% 试图在水里游泳，但他失败了"
+  - "%player% starved to death"
+  - "§l%player% 就算饿死也不想吃东西"
+  - "%player% hit the ground too hard"
+  - "§l%player% 没学好物理，想在空中游泳"
+  - "%player% fell from a high place"
+  - "§l%player% 玩蹦极出意外了"
+update: true
