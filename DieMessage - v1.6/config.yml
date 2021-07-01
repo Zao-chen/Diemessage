@@ -1,0 +1,26 @@
+intercept: true
+message:
+  - "%player% fell out of the world"
+  - "§l%player% 不知怎么就一命呜呼了"
+  - "or:§l%player% 猝死了"
+  - "%player% tried to swim in lava"
+  - "§l%player% 试图在岩浆里游泳，但他失败了"
+  - "or:§l%player% 把岩浆看成了水"
+  - "%player% was slain by Zombie"
+  - "§l%player% 太菜了,居然被小僵尸杀死了"
+  - "%player% drowned"
+  - "§l%player% 试图在水里游泳，但他失败了"
+  - "%player% starved to death"
+  - "§l%player% 就算饿死也不想吃东西"
+  - "%player% hit the ground too hard"
+  - "§l%player% 没学好物理，想在空中游泳"
+  - "%player% fell from a high place"
+  - "§l%player% 玩蹦极出意外了"
+update: true
+#用于检查插件的更新，这不会影响服务器运行，建议打开
+#It is used to check the update of plug-ins, which will not affect the operation of the server.
+#It is recommended to open it
+message-findupdates: "[Diemessage] 发现新版本，建议前往更新!https://www.mcbbs.net/thread-1194349-1-1.html你还停留在:"
+message-noupdatesfound: "插件已是最新版:"
+message-nopapi: "无法找到PlaceholderAPI,已自动禁用PlaceholderAPI功能"
+message-havepapi: "PlaceholderAPI功能已接入"
