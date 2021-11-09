@@ -1,0 +1,10 @@
+name: DieMessage
+version: 1.10
+main: diemessage.diemessage.DieMessage
+api-version: 1.15
+commands:
+  diemessage:
+    description: 插件主指令
+permissions:
+  diemessage.admin:
+    default: op
