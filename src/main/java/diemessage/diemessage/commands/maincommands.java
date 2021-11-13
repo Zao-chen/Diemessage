@@ -6,14 +6,17 @@ import org.bukkit.ChatColor;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
+import org.bukkit.command.TabExecutor;
 import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.configuration.file.YamlConfiguration;
 import org.bukkit.plugin.Plugin;
 
 import java.io.File;
+import java.util.ArrayList;
+import java.util.List;
 
 
-public class maincommands implements CommandExecutor {
+public class maincommands implements CommandExecutor, TabExecutor {
     @Override
     public boolean onCommand(CommandSender sender,Command command, String label,String[] args) {
         Plugin config = diemessage.diemessage.DieMessage.getProvidingPlugin(diemessage.diemessage.DieMessage.class);
@@ -23,6 +26,8 @@ public class maincommands implements CommandExecutor {
         {
             sender.sendMessage(ChatColor.YELLOW+"[Diemessage] "+ChatColor.GREEN+"/diemessage reload - reload plugin(重载插件)");
             sender.sendMessage(ChatColor.YELLOW+"[Diemessage] "+ChatColor.GREEN+"/diemessage info - look at plugin's info(查看插件配置)");
+            sender.sendMessage(ChatColor.YELLOW+"[Diemessage] "+ChatColor.GREEN+"/diemessage intercept - open intercept(开启调试模式)");
+
         }
         else
         {
@@ -58,5 +63,17 @@ public class maincommands implements CommandExecutor {
             }
         }
         return false;
+    }
+    @Override
+    public List<String> onTabComplete(CommandSender sendermm, Command coand, String alias, String[] args) {
+        if(args.length==1)
+        {
+            List<String> list = new ArrayList<>();
+            list.add("intercept");
+            list.add("reload");
+            list.add("info");
+            return list;
+        }
+        return null;
     }
 }

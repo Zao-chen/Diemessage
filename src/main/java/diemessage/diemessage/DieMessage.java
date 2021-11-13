@@ -11,6 +11,7 @@ import org.bukkit.plugin.Plugin;
 import org.bukkit.plugin.java.JavaPlugin;
 
 import java.io.File;
+import java.util.Objects;
 import java.util.logging.Logger;
 
 public final class DieMessage extends JavaPlugin {
@@ -33,6 +34,7 @@ public final class DieMessage extends JavaPlugin {
         Metrics metrics = new Metrics(this, pluginId);
         getServer().getPluginManager().registerEvents(new Mainevent(),this);
         getCommand("diemessage").setExecutor(new maincommands());
+        Objects.requireNonNull(getCommand("diemessage")).setTabCompleter(new maincommands());
         saveDefaultConfig();
         File aconfig = new File(this.getDataFolder(),"settings.yml");
         FileConfiguration cconfig = YamlConfiguration.loadConfiguration(aconfig);
