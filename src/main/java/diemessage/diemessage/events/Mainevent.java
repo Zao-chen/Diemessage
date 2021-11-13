@@ -79,6 +79,10 @@ public class Mainevent implements Listener {
                 }
                 else
                 {
+                    Random random_base = new Random();//生成种子
+                    String[] the_split = set.split("\\|");//分割数据
+                    int random_die = random_base.nextInt(the_split.length);//在0-分割数据的数量选取随机数
+                    set=the_split[random_die];//设置随机数输出
                     set = PlaceholderAPI.setPlaceholders(event.getEntity().getPlayer(),set);
                     event.setDeathMessage(set.replace("%player%", event.getEntity().getPlayer().getName() + ""));
                     return;
