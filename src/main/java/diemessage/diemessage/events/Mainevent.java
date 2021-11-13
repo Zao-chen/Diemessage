@@ -77,7 +77,7 @@ public class Mainevent implements Listener {
                     event.setDeathMessage(set.replace("%player%", event.getEntity().getPlayer().getName() + ""));
                     return;
                 }
-                else
+                else//如果没有papi
                 {
                     Random random_base = new Random();//生成种子
                     String[] the_split = set.split("\\|");//分割数据
