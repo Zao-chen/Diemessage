@@ -14,6 +14,7 @@ import org.bukkit.plugin.Plugin;
 import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 
 public class maincommands implements CommandExecutor, TabExecutor {
@@ -48,7 +49,7 @@ public class maincommands implements CommandExecutor, TabExecutor {
                         }
                     });
                 }
-                if(cconfig.getString("intercept").equals("true")) {
+                if(Objects.equals(cconfig.getString("intercept"), "true")) {
                     sender.sendMessage(ChatColor.YELLOW+"[Diemessage] "+ChatColor.GREEN+"intercept is true(死亡拦截目前开启)");
                 }
                 else sender.sendMessage(ChatColor.YELLOW+"[Diemessage] "+ChatColor.GREEN+"intercept is false(死亡拦截目前关闭)");
