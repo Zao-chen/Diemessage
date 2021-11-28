@@ -65,7 +65,7 @@ public class maincommands implements CommandExecutor, TabExecutor {
         }
         return false;
     }
-    /*tab十二猴子*/
+    /*tab提示*/
     @Override
     public List<String> onTabComplete(CommandSender sendermm, Command coand, String alias, String[] args) {
         if(args.length==1)
