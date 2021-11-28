@@ -27,7 +27,7 @@ public class maincommands implements CommandExecutor, TabExecutor {
         {
             sender.sendMessage(ChatColor.YELLOW+"[Diemessage] "+ChatColor.GREEN+"/diemessage reload - reload plugin(重载插件)");
             sender.sendMessage(ChatColor.YELLOW+"[Diemessage] "+ChatColor.GREEN+"/diemessage info - look at plugin's info(查看插件配置)");
-            sender.sendMessage(ChatColor.YELLOW+"[Diemessage] "+ChatColor.GREEN+"/diemessage intercept - open intercept(开启调试模式)");
+            sender.sendMessage(ChatColor.YELLOW+"[Diemessage] "+ChatColor.GREEN+"/diemessage intercept - open intercept(开启/关闭调试模式)");
 
         }
         else
