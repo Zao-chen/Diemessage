@@ -4,6 +4,10 @@
 
 如果你想知道更多，请查看wiki
 
+https://github.com/Zao-chen/Diemessage/wiki
+
+***
+
 **here is the plugin's page：**
 
 https://www.spigotmc.org/resources/diemessage-custom-death-message.91658/
