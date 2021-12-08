@@ -2,7 +2,7 @@
 
 **If you want to know more,You can see the wiki**
 
-如果你想知道更多，请查看wiki
+如果你想知道更多，请查看wiki(其实bbs更详细……)
 
 https://github.com/Zao-chen/Diemessage/wiki
 
