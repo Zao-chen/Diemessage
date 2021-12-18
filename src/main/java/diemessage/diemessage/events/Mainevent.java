@@ -36,11 +36,12 @@ public class Mainevent implements Listener {
             event.getEntity().getPlayer().sendMessage("%player%: "+event.getEntity().getPlayer().getName());
             try
             {
-                event.getEntity().getPlayer().sendMessage("%arm%"+ Objects.requireNonNull(Objects.requireNonNull(event.getEntity().getKiller().getEquipment()).getItemInMainHand().getItemMeta()).getDisplayName() + "");
+                event.getEntity().getPlayer().sendMessage("%arm%: "+ Objects.requireNonNull(Objects.requireNonNull(event.getEntity().getKiller().getEquipment()).getItemInMainHand().getItemMeta()).getDisplayName()
+                        .replace("§1","").replace("§2","").replace("§3","").replace("§4","").replace("§5","").replace("§6","").replace("§7","").replace("§8","").replace("§9","").replace("§a","").replace("§c","").replace("§d","").replace("§b","").replace("§o","").replace("§l","").replace("§a",""));
             }
             catch (Exception e)
             {
-                event.getEntity().getPlayer().sendMessage("%arm%:null");
+                event.getEntity().getPlayer().sendMessage("%arm%: null");
 
             }
             event.getEntity().getPlayer().sendMessage(ChatColor.YELLOW+"+----------+");
@@ -54,7 +55,8 @@ public class Mainevent implements Listener {
                 bi2 = bi2.replace("%killer%", event.getEntity().getKiller().getName() + "");
             }
             try {
-                bi2 = bi2.replace("%arm%", Objects.requireNonNull(Objects.requireNonNull(event.getEntity().getKiller().getEquipment()).getItemInMainHand().getItemMeta()).getDisplayName() + "");
+                bi2 = bi2.replace("%arm%", Objects.requireNonNull(Objects.requireNonNull(event.getEntity().getKiller().getEquipment()).getItemInMainHand().getItemMeta()).getDisplayName()
+                        .replace("§1","").replace("§2","").replace("§3","").replace("§4","").replace("§5","").replace("§6","").replace("§7","").replace("§8","").replace("§9","").replace("§a","").replace("§c","").replace("§d","").replace("§b","").replace("§o","").replace("§l","").replace("§a",""));
             }
             catch (Exception ignored)
             {}
