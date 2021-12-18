@@ -38,6 +38,7 @@ public class Mainevent implements Listener {
             {
                 event.getEntity().getPlayer().sendMessage("%arm%: "+ Objects.requireNonNull(Objects.requireNonNull(event.getEntity().getKiller().getEquipment()).getItemInMainHand().getItemMeta()).getDisplayName()
                         .replace("§1","").replace("§2","").replace("§3","").replace("§4","").replace("§5","").replace("§6","").replace("§7","").replace("§8","").replace("§9","").replace("§a","").replace("§c","").replace("§d","").replace("§b","").replace("§o","").replace("§l","").replace("§a",""));
+                // 暴力去除彩色
             }
             catch (Exception e)
             {
