@@ -32,8 +32,13 @@ public class Mainevent implements Listener {
         {
             Objects.requireNonNull(event.getEntity().getPlayer()).sendMessage(ChatColor.YELLOW+"+----------+");
             event.getEntity().getPlayer().sendMessage("Die Message :\n"+event.getDeathMessage());
-            if(event.getEntity().getKiller()!=null) event.getEntity().getPlayer().sendMessage("{killer}: "+event.getEntity().getKiller().getName());
+            if(event.getEntity().getKiller()!=null) //检查有没有killer
+            {
+                event.getEntity().getPlayer().sendMessage("{killer}: "+event.getEntity().getKiller().getName());
+                event.getEntity().getPlayer().sendMessage("{killer_displayname}: "+event.getEntity().getKiller().getDisplayName());
+            }
             event.getEntity().getPlayer().sendMessage("{player}: "+event.getEntity().getPlayer().getName());
+            event.getEntity().getPlayer().sendMessage("{player_displayname}: "+event.getEntity().getPlayer().getDisplayName());
             try
             {
                 event.getEntity().getPlayer().sendMessage("{arm}: "+ Objects.requireNonNull(Objects.requireNonNull(event.getEntity().getKiller().getEquipment()).getItemInMainHand().getItemMeta()).getDisplayName()
@@ -52,8 +57,11 @@ public class Mainevent implements Listener {
         {
             String bi1 = event.getDeathMessage();
             String bi2 = str.replace("{player}", Objects.requireNonNull(event.getEntity().getPlayer()).getName()+"");
+            bi2 = bi2.replace("{player_displayname}", Objects.requireNonNull(event.getEntity().getPlayer()).getDisplayName()+"");
+
             if(event.getEntity().getKiller()!=null) {
                 bi2 = bi2.replace("{killer}", event.getEntity().getKiller().getName() + "");
+                bi2 = bi2.replace("{killer_displayname}", event.getEntity().getKiller().getDisplayName() + "");
             }
             try {
                 bi2 = bi2.replace("{arm}", Objects.requireNonNull(Objects.requireNonNull(event.getEntity().getKiller().getEquipment()).getItemInMainHand().getItemMeta()).getDisplayName()
@@ -77,7 +85,9 @@ public class Mainevent implements Listener {
                     String[] the_split = set.split("\\|"); //分割数据
                     int random_die = random_base.nextInt(the_split.length); //在0-分割数据的数量选取随机数
                     set=the_split[random_die]; //设置随机数输出
-                    event.setDeathMessage(set.replace("{player}", event.getEntity().getPlayer().getName() + ""));
+                    set = set.replace("{player}", event.getEntity().getPlayer().getName() + "");
+                    set = set.replace("{player_displayname}", event.getEntity().getPlayer().getDisplayName() + "");
+                    event.setDeathMessage(set);
                     return;
                 }
                 else //如果没有papi
@@ -86,8 +96,9 @@ public class Mainevent implements Listener {
                     String[] the_split = set.split("\\|"); //分割数据
                     int random_die = random_base.nextInt(the_split.length); //在0-分割数据的数量选取随机数
                     set=the_split[random_die]; //设置随机数输出
-                    set = PlaceholderAPI.setPlaceholders(event.getEntity().getPlayer(),set);
-                    event.setDeathMessage(set.replace("{player}", event.getEntity().getPlayer().getName() + ""));
+                    set = PlaceholderAPI.setPlaceholders(event.getEntity().getPlayer(),set); set = set.replace("{player}", event.getEntity().getPlayer().getName() + "");
+                    set = set.replace("{player_displayname}", event.getEntity().getPlayer().getDisplayName() + "");
+                    event.setDeathMessage(set);
                     return;
                 }
             }

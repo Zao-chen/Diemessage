@@ -27,8 +27,6 @@ public class maincommands implements CommandExecutor, TabExecutor {
         {
             sender.sendMessage(ChatColor.YELLOW+"[Diemessage] "+ChatColor.GREEN+"/diemessage reload - reload plugin(重载插件)");
             sender.sendMessage(ChatColor.YELLOW+"[Diemessage] "+ChatColor.GREEN+"/diemessage info - look at plugin's info(查看插件配置)");
-            sender.sendMessage(ChatColor.YELLOW+"[Diemessage] "+ChatColor.GREEN+"/diemessage intercept - open intercept(开启/关闭调试模式)");
-
         }
         else
         {
@@ -67,11 +65,10 @@ public class maincommands implements CommandExecutor, TabExecutor {
     }
     /*tab补全提示设置*/
     @Override
-    public List<String> onTabComplete(CommandSender sendermm, Command coand, String alias, String[] args) {
+    public List<String> onTabComplete(CommandSender sender, Command command, String alias, String[] args) {
         if(args.length==1)
         {
             List<String> list = new ArrayList<>();
-            list.add("intercept");
             list.add("reload");
             list.add("info");
             return list;

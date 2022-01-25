@@ -21,6 +21,7 @@ public final class DieMessage extends JavaPlugin {
         Logger logger = this.getLogger();
         getServer().getPluginManager().registerEvents(new Mainevent(),this); //加入监听器
         Objects.requireNonNull(getCommand("diemessage")).setExecutor(new maincommands()); //加入指令
+        Objects.requireNonNull(getCommand("diemessage")).setTabCompleter(new maincommands()); //加入tab
         int pluginId = 11123; // <-- Replace with the id of your plugin!
         /*接入state*/
         Metrics metrics = new Metrics(this, pluginId);
