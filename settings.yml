@@ -1,5 +1,7 @@
 update: true
 intercept: false
+#设置死亡时输出指令
+#可以{}变量
 commands:
   enable: false
   commands:
