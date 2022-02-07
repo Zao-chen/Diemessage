@@ -88,9 +88,28 @@ public class Mainevent implements Listener {
                     set = set.replace("{player}", event.getEntity().getPlayer().getName() + "");
                     set = set.replace("{player_displayname}", event.getEntity().getPlayer().getDisplayName() + "");
                     event.setDeathMessage(set);
+
+                    if(cconfig.getBoolean("commands.enable")) //死亡输出指令
+                    {
+                        List <String> command_list = cconfig.getStringList("commands.commands");
+                        for(String command : command_list)
+                        {
+                            command = command.replace("{message}",set);
+                            command = command.replace("{player}",event.getEntity().getPlayer().getName());
+                            command = command.replace("{player_displayname}", event.getEntity().getPlayer().getDisplayName());
+                            if(event.getEntity().getKiller()!=null) command = command.replace("{killer}",event.getEntity().getKiller().getName()+"");
+                            try
+                            {
+                                command = command.replace("{arm}", Objects.requireNonNull(Objects.requireNonNull(event.getEntity().getKiller().getEquipment()).getItemInMainHand().getItemMeta()).getDisplayName() + "");
+                            }
+                            catch (Exception ignored) {}
+                            Bukkit.getServer().dispatchCommand(Bukkit.getConsoleSender(),command);
+                            break;
+                        }
+                    }
                     return;
                 }
-                else //如果没有papi
+                else //如果有papi
                 {
                     Random random_base = new Random(); //生成种子
                     String[] the_split = set.split("\\|"); //分割数据
@@ -99,6 +118,23 @@ public class Mainevent implements Listener {
                     set = PlaceholderAPI.setPlaceholders(event.getEntity().getPlayer(),set); set = set.replace("{player}", event.getEntity().getPlayer().getName() + "");
                     set = set.replace("{player_displayname}", event.getEntity().getPlayer().getDisplayName() + "");
                     event.setDeathMessage(set);
+                    if(cconfig.getBoolean("commands.enable")) //死亡输出指令
+                    {
+                        List <String> command_list = cconfig.getStringList("commands.commands");
+                        for(String command : command_list)
+                        {
+                            command = command.replace("{message}",set);
+                            command = command.replace("{player}",event.getEntity().getPlayer().getName());
+                            command = command.replace("{player_displayname}", event.getEntity().getPlayer().getDisplayName());
+                            if(event.getEntity().getKiller()!=null) command = command.replace("{killer}",event.getEntity().getKiller().getName()+"");
+                            try
+                            {
+                                command = command.replace("{arm}", Objects.requireNonNull(Objects.requireNonNull(event.getEntity().getKiller().getEquipment()).getItemInMainHand().getItemMeta()).getDisplayName() + "");
+                            }
+                            catch (Exception ignored) {}
+                            Bukkit.getServer().dispatchCommand(Bukkit.getConsoleSender(),command);
+                        }
+                    }
                     return;
                 }
             }

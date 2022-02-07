@@ -17,3 +17,4 @@ message:
   - "{player} was slain by {killer} using [{arm}]"
   - "§l{player} 被 {killer} 使用 {arm} 摁在墙上打"
 #单数行是拦截的指令，其下面一行是替换成什么
+#The singular line is the intercepted instruction. What is the next line replaced with

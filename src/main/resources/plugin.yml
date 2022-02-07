@@ -1,5 +1,5 @@
 name: DieMessage
-version: 1.13
+version: 1.14
 main: diemessage.diemessage.DieMessage
 api-version: 1.15
 commands:

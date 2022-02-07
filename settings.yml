@@ -1,2 +1,7 @@
 update: true
 intercept: false
+commands:
+  enable: false
+  commands:
+    - "say this_is_a_example"
+    - "{message}"
