@@ -1,5 +1,6 @@
 package diemessage.diemessage.commands;
 
+import diemessage.diemessage.DieMessage;
 import diemessage.diemessage.UpdateChecker;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
@@ -38,27 +39,35 @@ public class maincommands implements CommandExecutor, TabExecutor {
             }
             else if(args[0].equals("info"))
             {
-                if(cconfig.getBoolean("update")) {
-                    new UpdateChecker(diemessage.diemessage.DieMessage.getPlugin(diemessage.diemessage.DieMessage.class), 91658).getVersion(version -> {
-                        if (diemessage.diemessage.DieMessage.getProvidingPlugin(diemessage.diemessage.DieMessage.class).getDescription().getVersion().equalsIgnoreCase(version)) {
-                            sender.sendMessage(ChatColor.YELLOW+"[Diemessage] "+ChatColor.GREEN+"The plugin is up to date(插件已是最新版):"+version);
-                        } else {
-                            sender.sendMessage(ChatColor.YELLOW+"[Diemessage] "+ChatColor.GREEN+"New version found(发现新版):"+ version+ "\nsuggest to update!https://www.spigotmc.org/resources/diemessage-custom-death-message.91658\n(请前往https://www.mcbbs.net/thread-1194349-1-1.html更新插件");
-                        }
-                    });
-                }
-                if(Objects.equals(cconfig.getString("intercept"), "true")) {
-                    sender.sendMessage(ChatColor.YELLOW+"[Diemessage] "+ChatColor.GREEN+"intercept is true(死亡拦截目前开启)");
-                }
-                else sender.sendMessage(ChatColor.YELLOW+"[Diemessage] "+ChatColor.GREEN+"intercept is false(死亡拦截目前关闭)");
-                if (Bukkit.getPluginManager().getPlugin("PlaceholderAPI") != null)
+                String synthesis_message = "====DieMessage==="; //合成消息
+                if(Objects.equals(cconfig.getString("intercept"), "true"))
                 {
-                    sender.sendMessage(ChatColor.YELLOW+"[Diemessage] "+ChatColor.GREEN+"PlaceholderAPI function has been accessed(papi已接入)");
+                    if(cconfig.getString("langerous").equals("en")) synthesis_message += "\nintercept: true";
+                    else synthesis_message += "\n死亡拦截: 开启";
                 }
                 else
                 {
-                    sender.sendMessage(ChatColor.YELLOW+"[Diemessage] "+ChatColor.GREEN+"PlaceholderAPI cannot be found, PlaceholderAPI feature has been automatically disabled(papi未接入)");
+                    if(cconfig.getString("langerous").equals("en")) synthesis_message += "\nintercept: false";
+                    else synthesis_message += "\n死亡拦截: 关闭";
                 }
+                if (Bukkit.getPluginManager().getPlugin("PlaceholderAPI") != null)
+                {
+                    if(cconfig.getString("langerous").equals("en")) synthesis_message += "\nPapi: have";
+                    else synthesis_message += "\nPapi: 拥有";
+                }
+                else
+                {
+                    if(cconfig.getString("langerous").equals("en")) synthesis_message += "\nPapi: no";
+                    else synthesis_message += "\nPapi: 没有";
+                }
+                if(cconfig.getBoolean("update")) {
+                    String finalSynthesis_message = synthesis_message;
+                    new UpdateChecker(diemessage.diemessage.DieMessage.getPlugin(diemessage.diemessage.DieMessage.class), 91658).getVersion(version -> {
+                        if(cconfig.getString("langerous").equals("en")) sender.sendMessage(finalSynthesis_message+"\nnow version: "+ diemessage.diemessage.DieMessage.getProvidingPlugin(diemessage.diemessage.DieMessage.class).getDescription().getVersion()+"\nlatest version: "+version+"\n================");
+                        else sender.sendMessage(finalSynthesis_message+"\n当前版本: "+ diemessage.diemessage.DieMessage.getProvidingPlugin(diemessage.diemessage.DieMessage.class).getDescription().getVersion()+"\n最新版本: "+version+"\n=================");
+                    });
+                }
+
             }
         }
         return false;

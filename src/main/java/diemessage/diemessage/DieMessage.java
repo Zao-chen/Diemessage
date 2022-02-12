@@ -43,11 +43,20 @@ public final class DieMessage extends JavaPlugin {
         /*检查更新*/
         if(cconfig.getBoolean("update")) {
             new UpdateChecker(this, 91658).getVersion(version -> {
-                if (this.getDescription().getVersion().equalsIgnoreCase(version))
+                if(cconfig.getString("langerous").equals("en"))
                 {
-                    logger.info(ChatColor.YELLOW+"[Diemessage] "+ChatColor.GREEN+"The plugin is up to date(插件已是最新版):"+version);
-                } else {
-                    logger.info(ChatColor.YELLOW+"[Diemessage] "+ChatColor.GREEN+"New version found(发现新版):"+ version+ "\nYou are still at(你还停留在):"+this.getDescription().getVersion()+"\nsuggest to update!https://www.spigotmc.org/resources/diemessage-custom-death-message.91658\n(请前往https://www.mcbbs.net/thread-1194349-1-1.html更新插件");
+                    if (this.getDescription().getVersion().equalsIgnoreCase(version)) {
+                        logger.info(ChatColor.YELLOW + "[Diemessage] " + ChatColor.GREEN + "The plugin is up to date: " + version);
+                    } else {
+                        logger.info(ChatColor.YELLOW + "[Diemessage] " + ChatColor.GREEN + "New version found: " + version + ",You are still at: " + this.getDescription().getVersion() + ",suggest to update!https://www.spigotmc.org/resources/diemessage-custom-death-message.91658");
+                    }
+                }
+                else {
+                    if (this.getDescription().getVersion().equalsIgnoreCase(version)) {
+                        logger.info(ChatColor.YELLOW + "[Diemessage] " + ChatColor.GREEN + "插件已是最新版: " + version);
+                    } else {
+                        logger.info(ChatColor.YELLOW + "[Diemessage] " + ChatColor.GREEN + "发现新版本: " + version + ",你还停留在: " + this.getDescription().getVersion() + ",推荐前往更新：https://www.mcbbs.net/thread-1194349-1-1.html");
+                    }
                 }
             });
         }

@@ -1,7 +1,8 @@
 update: true
 intercept: false
-#设置死亡时输出指令
-#可以{}变量
+#ch or en
+langerous: ch
+#设置死亡时输出指令(set commands when player die)
 commands:
   enable: false
   commands:
